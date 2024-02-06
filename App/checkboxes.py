@@ -15,10 +15,10 @@ class MyCheckbox:
         if self.selected:
             pygame.draw.rect(self.surface, (0, 0, 255), self.rect)
         else:
-            pygame.draw.rect(self.surface, (255, 255, 255), self.rect)
+            pygame.draw.rect(self.surface, (0,0,0), self.rect)
         
         check_symbol = 'X' if self.selected else ''  # Display 'X' if selected, else ''
-        check_surface = self.check_font.render(check_symbol, True, (255, 255, 255))
+        check_surface = self.check_font.render(check_symbol, True, (0,0,0))
         check_rect = check_surface.get_rect(center=(self.rect.left + 20, self.rect.centery))  # Adjust position
         
         text_surface = self.font.render(self.text, True, self.text_color)

@@ -10,7 +10,7 @@ class MyPygame:
         self.screen_height = 720
         self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))       
         self.clock = pygame.time.Clock()
-        self.dt = self.clock.tick(60) / 5000
+        self.dt = self.clock.tick(60) / 1000
         
     def pygame_event(self, *args):
         event_running = True

@@ -1,4 +1,6 @@
+from math import floor
 import pygame
+from recap_game import RecapGame
 from my_pygame import MyPygame
 from settings import Settings
 from trap import Trap
@@ -20,18 +22,64 @@ class Game(Settings, MyPygame):
         self.nb_foods = 5
         self.nb_traps = 2
         self.adapt_level()
+        self.start_time = pygame.time.get_ticks()
+        # self.total_time = 120000
+        self.total_time = 3000
     
-    def play(self):
+    def run(self):
         while self.game_running:
-            self.screen.fill("white")
+            self.screen.fill((194, 161, 236))
             self.create_foods()
             self.create_traps()
             self.render_objects()
             self.player.move(self)
             self.game_running = self.pygame_event()
+            self.diplay_timer()
+            self.display_score()
+            self.display_radius()
+            self.display_speed()
+            self.display_level()
             pygame.display.flip()
                     
     # ==== Subfunctions ==== #
+    
+    def diplay_timer(self):
+        elapsed_time = pygame.time.get_ticks() - self.start_time
+        if(elapsed_time >= self.total_time):
+            self.game_running = False
+            recap = RecapGame(score = self.player.get_score(), screen = self.screen)
+            recap.run()
+        else:
+            remaining_time = max((self.total_time - elapsed_time) // 1000, 0)
+            font = pygame.font.Font(None, 36)  # Police de caractères et taille
+            text_surface = font.render(f"Time: {remaining_time}", True, ((0,0,0)))  # Couleur rouge
+            text_rect = text_surface.get_rect(topleft=(10, 10))  # Position en haut à gauche
+            self.screen.blit(text_surface, text_rect)
+        
+    def display_score(self):
+        font = pygame.font.Font(None, 36)
+        text_surface = font.render(f"Score: {floor(self.player.get_score())}", True, ((0,0,0)))
+        text_rect = text_surface.get_rect(topleft=(10, 50))
+        self.screen.blit(text_surface, text_rect)
+        
+    def display_radius(self):
+        font = pygame.font.Font(None, 36)
+        text_surface = font.render(f"Radius: {floor(self.player.get_radius())}", True, ((0,0,0)))
+        text_rect = text_surface.get_rect(topleft=(10, 90))
+        self.screen.blit(text_surface, text_rect)
+    
+    def display_speed(self):
+        font = pygame.font.Font(None, 36)
+        text_surface = font.render(f"Speed: {floor(self.player.get_speed())}", True, ((0,0,0)))
+        text_rect = text_surface.get_rect(topleft=(10, 130))
+        self.screen.blit(text_surface, text_rect)
+    
+    def display_level(self):
+        font = pygame.font.Font(None, 36)
+        text_surface = font.render(f"Level: {self.get_key_from_value(self.alllevels, self.level)}", True, (0,0,0))
+        text_rect = text_surface.get_rect(topleft=(10, 170))
+        self.screen.blit(text_surface, text_rect)
+    
     def create_foods(self):
         while(len(self.foods) < self.nb_foods):
             _food = Food(self.screen)

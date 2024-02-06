@@ -16,18 +16,18 @@ class Menu(Settings, MyPygame):
         self.buttons = []
         self.groupCheckboxes = MyCheckboxesGroup()
         self.create_button()
-        self.menu()
+        self.run()
         
-    def menu(self):
+    def run(self):
         while self.menu_running:
-            self.screen.fill((0, 0, 0))
+            self.screen.fill((194, 161, 236))
             self.render_menu()
             self.menu_running = self.pygame_event(self.buttons, self.groupCheckboxes)
             if isinstance(self.menu_running, Button):
                 self.getSettings()
                 self.menu_running = False
                 game = Game(self.level_selected, self.mode)
-                game.play()
+                game.run()
                 self.menu_running = True
                 
     def getSettings(self):
@@ -35,11 +35,11 @@ class Menu(Settings, MyPygame):
             self.mode = 1
         elif(self.menu_running.text == "Jouer avec le clavier"):
             self.mode = 2
-        if(self.groupCheckboxes.get_selected() == "Mode facile"):
+        if(self.groupCheckboxes.get_selected() == "Easy mode"):
             self.level_selected = 2
-        elif(self.groupCheckboxes.get_selected() == "Mode moyen"):
+        elif(self.groupCheckboxes.get_selected() == "Normal mode"):
             self.level_selected = 3
-        elif(self.groupCheckboxes.get_selected() == "Mode difficile"):
+        elif(self.groupCheckboxes.get_selected() == "Hard mode"):
             self.level_selected = 4
                 
     def create_button(self):
@@ -51,11 +51,11 @@ class Menu(Settings, MyPygame):
         self.buttons.append(button1)
         button2 = Button(self.screen, (self.screen.get_width() - button_width) // 2, 300, button_width, button_height, button_color, "Jouer avec le clavier", (0, 0, 0), font)
         self.buttons.append(button2)   
-        checkbox1 = MyCheckbox(self.screen, 100, 400, 20, 20, True, "Mode facile", (255, 255, 255), font)
+        checkbox1 = MyCheckbox(self.screen, 100, 400, 20, 20, True, "Easy mode", (0,0,0), font)
         self.groupCheckboxes.checkboxes.append(checkbox1)
-        checkbox2 = MyCheckbox(self.screen, 100, 450, 20, 20, False, "Mode moyen", (255, 255, 255), font)
+        checkbox2 = MyCheckbox(self.screen, 100, 450, 20, 20, False, "Normal mode", (0,0,0), font)
         self.groupCheckboxes.checkboxes.append(checkbox2)
-        checkbox3 = MyCheckbox(self.screen, 100, 500, 20, 20, False, "Mode difficile", (255, 255, 255), font)
+        checkbox3 = MyCheckbox(self.screen, 100, 500, 20, 20, False, "Hard mode", (0,0,0), font)
         self.groupCheckboxes.checkboxes.append(checkbox3)
             
     def render_menu(self):
