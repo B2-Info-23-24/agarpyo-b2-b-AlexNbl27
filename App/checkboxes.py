@@ -11,7 +11,6 @@ class MyCheckbox:
         self.check_font = pygame.font.Font(None, 36)  # Font for the check symbol
     
     def draw(self):
-        # Draw the checkbox rectangle
         if self.selected:
             pygame.draw.rect(self.surface, (0, 0, 255), self.rect)
         else:
@@ -19,7 +18,7 @@ class MyCheckbox:
         
         check_symbol = 'X' if self.selected else ''  # Display 'X' if selected, else ''
         check_surface = self.check_font.render(check_symbol, True, (0,0,0))
-        check_rect = check_surface.get_rect(center=(self.rect.left + 20, self.rect.centery))  # Adjust position
+        check_rect = check_surface.get_rect(center=(self.rect.left + 10, self.rect.centery))
         
         text_surface = self.font.render(self.text, True, self.text_color)
         text_rect = text_surface.get_rect(midleft=(self.rect.left + 40, self.rect.centery))
@@ -46,6 +45,13 @@ class MyCheckboxesGroup:
         for _checkbox in self.checkboxes:
             if _checkbox != checkbox:
                 _checkbox.selected = False
+        _at_least_one_selected = False
+        for _checkbox in self.checkboxes:
+            if _checkbox.selected:
+                _at_least_one_selected = True
+                break
+        if not _at_least_one_selected:
+            checkbox.selected = True
     
     def is_clicked(self):
         for checkbox in self.checkboxes:

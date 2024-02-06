@@ -1,13 +1,15 @@
 from math import floor
 import pygame
+from settings import Settings
 from object import Object
 
 
-class Player(Object):
-    def __init__(self, screen): 
+class Player(Object, Settings):
+    def __init__(self, screen):
+        Settings.__init__(self)
         _radius = 40
-        _color = (255, 0, 0)
-        super().__init__(_radius, _color, screen.get_width() // 2, screen.get_height() // 2)
+        _color = self.PLAYER_COLOR
+        Object.__init__(self, _radius, _color, screen.get_width() // 2, screen.get_height() // 2)
         self.speed = 100
         self.score = 0
 
@@ -43,11 +45,11 @@ class Player(Object):
     
     def move(self, game):
         if(game.mode == game.allmodes["mouse"]):
-            self.move_to_mouse(game)
+            self.move_to_mouse(game.mypygame.dt)
         elif(game.mode == game.allmodes["keyboard"]):
             keys = pygame.key.get_pressed()
-            self.key_pressed(game.dt, keys)
-        self.teleport(game.screen)
+            self.key_pressed(game.mypygame.dt, keys)
+        self.teleport(game.mypygame.screen)
         self.colisions(game)
     
     def teleport(self, screen):
@@ -89,11 +91,11 @@ class Player(Object):
             
     # ==== Mouse mode ==== #
             
-    def move_to_mouse(self, game):
+    def move_to_mouse(self, dt):
         mouse_x, mouse_y = pygame.mouse.get_pos()
         angle = self.get_angle(mouse_x, mouse_y)
-        self.x += self.speed * game.dt * angle[0]
-        self.y += self.speed * game.dt * angle[1]
+        self.x += self.speed * dt * angle[0]
+        self.y += self.speed * dt * angle[1]
         
     def get_angle(self, mouse_x, mouse_y):
         dx = mouse_x - self.x
