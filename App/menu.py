@@ -1,6 +1,5 @@
 import pygame
 from checkboxes import MyCheckbox, MyCheckboxesGroup
-from checkbox import Checkbox
 from game import Game
 from button import Button
 from my_pygame import MyPygame
