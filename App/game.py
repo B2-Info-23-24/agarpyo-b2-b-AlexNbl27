@@ -23,8 +23,8 @@ class Game(Settings):
         self.nb_traps = 2
         self.adapt_level()
         self.start_time = pygame.time.get_ticks()
-        # self.total_time = 60000
-        self.total_time = 3000
+        self.total_time = 60000
+        # self.total_time = 3000
     
     def run(self):
         while self.game_running:
