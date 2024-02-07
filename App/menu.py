@@ -25,9 +25,13 @@ class Menu(Settings):
             self.render_menu()
             self.menu_running = self.mypygame.pygame_event(self.buttons, self.groupCheckboxes, p=pygame.K_p)
             if isinstance(self.menu_running, Button):
-                self.getSettings()
-                game = Game(self.mypygame, self.level_selected, self.mode)
-                game.run()
+                if(self.menu_running.text == "QUIT"):
+                    self.menu_running = False;
+                    pygame.quit()
+                else:
+                    self.getSettings()
+                    game = Game(self.mypygame, self.level_selected, self.mode)
+                    game.run()
             if isinstance(self.menu_running, str):
                 if self.menu_running == "p":
                     self.getSettings()
@@ -58,7 +62,9 @@ class Menu(Settings):
         button1 = Button(self.mypygame.screen, (self.mypygame.screen.get_width() - button_width) // 2, 200, button_width, button_height, button_color, "Play with mouse", self.BLACK, font)
         self.buttons.append(button1)
         button2 = Button(self.mypygame.screen, (self.mypygame.screen.get_width() - button_width) // 2, 300, button_width, button_height, button_color, "Play with keyboard", self.BLACK, font)
-        self.buttons.append(button2)   
+        self.buttons.append(button2)
+        button3 = Button(self.mypygame.screen, (self.mypygame.screen.get_width() - button_width*0.5) // 2, 400, button_width*0.5, button_height, button_color, "QUIT", self.BLACK, font)
+        self.buttons.append(button3)
         checkbox1 = MyCheckbox(self.mypygame.screen, 100, 400, 20, 20, True, "Easy mode", self.BLACK, font)
         self.groupCheckboxes.checkboxes.append(checkbox1)
         checkbox2 = MyCheckbox(self.mypygame.screen, 100, 450, 20, 20, False, "Normal mode", self.BLACK, font)
