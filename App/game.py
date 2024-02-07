@@ -52,7 +52,7 @@ class Game(Settings):
         else:
             remaining_time = max((self.total_time - elapsed_time) // 1000, 0)
             font = pygame.font.Font(None, 36)
-            text_surface = font.render(f"Time: {remaining_time}", True, self.BLACK)
+            text_surface = font.render(f"Timer: {remaining_time} sec", True, self.BLACK)
             text_rect = text_surface.get_rect(topleft=(10, 10))
             self.mypygame.screen.blit(text_surface, text_rect)
         
