@@ -12,7 +12,7 @@ Agarpyo is a game inspired by Agar.io which allows you to play solo with the aim
 ## 🎯 Installation step by step (on Windows)
 1. **Clone the project where you want it to be**
 ```
-https://github.com/B2-Info-23-24/agarpyo-b2-b-AlexNbl27.git
+git clone https://github.com/B2-Info-23-24/agarpyo-b2-b-AlexNbl27.git
 ```
 💡 I recommend to clone the folder in `Downloads`
 
@@ -20,19 +20,15 @@ https://github.com/B2-Info-23-24/agarpyo-b2-b-AlexNbl27.git
 ```
 mv agarpyo-b2-b-AlexNbl27 agarpyo-noblet
 ```
-3. **Move into the renamed folder**
-```
-cd agarpyo-noblet
-```
-4. **Open Anaconda Navigator**
+3. **Open Anaconda Navigator**
 
-5. **Import the python environment**
+4. **Import the python environment**
 <br>In the application, go to the tab `Environements`. Then, you should see a button `Import`  at the bottom of the window. Click on it. A popup appears. Click on the folder icon just under the text `Local Drive`. The Windows explorer opens. Now, you have to find the location where you put the folder `agarpyo`. Once you find it, open it and click on the file `agarpyo_env.yaml`. Finally, click on the `Import` button.
 
-6. **Open the environment**
+5. **Open the environment**
 <br> Once the python environment is imported, go to the tab `Home`. Make sure to change the current environment to `agarpyo_env`. You should read : *All applications on agarpyo_env*. If it is correct, you can now install (or launch if already installed) the `CMD.exe Prompt` by clicking on the button `Install`.
 
-7. **Move to project folder location**
+6. **Move to project folder location**
 <br>This is the step where you have to do it a little bit by yourself. In the command prompt, you have to navigate to the location where you put the folder `agarpyo-noblet`. You can use these two commands :
 - Navigate inside a folder
 ```
@@ -62,7 +58,7 @@ dir
 07/02/2024  13:47             2 255 README.md
 ```
 
-8. **Launch the project**
+7. **Launch the project**
 ```
 python App/main.py
 ```
