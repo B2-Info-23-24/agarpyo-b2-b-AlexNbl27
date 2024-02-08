@@ -14,6 +14,8 @@ Agarpyo is a game inspired by Agar.io which allows you to play solo with the aim
 ```
 https://github.com/B2-Info-23-24/agarpyo-b2-b-AlexNbl27.git
 ```
+💡 I recommend to clone the folder in `Downloads`
+
 2. **Rename the created folder**
 ```
 mv agarpyo-b2-b-AlexNbl27 agarpyo-noblet
@@ -28,7 +30,7 @@ cd agarpyo-noblet
 <br>In the application, go to the tab `Environements`. Then, you should see a button `Import`  at the bottom of the window. Click on it. A popup appears. Click on the folder icon just under the text `Local Drive`. The Windows explorer opens. Now, you have to find the location where you put the folder `agarpyo`. Once you find it, open it and click on the file `agarpyo_env.yaml`. Finally, click on the `Import` button.
 
 6. **Open the environment**
-<br> Once the python environment is imported, go to the tap `Home`. Make sure to change the current environment to `agarpyo_env`. You should read : *All applications on agarpyo_env*. If it is correct, you can now install the `CMD.exe Prompt` by clicking on the button `Install`. Once done, click on `Launch`.
+<br> Once the python environment is imported, go to the tab `Home`. Make sure to change the current environment to `agarpyo_env`. You should read : *All applications on agarpyo_env*. If it is correct, you can now install (or launch if already installed) the `CMD.exe Prompt` by clicking on the button `Install`.
 
 7. **Move to project folder location**
 <br>This is the step where you have to do it a little bit by yourself. In the command prompt, you have to navigate to the location where you put the folder `agarpyo-noblet`. You can use these two commands :
@@ -39,6 +41,10 @@ cd folder_name
 - Navigate to previous location :
 ```
 cd ..
+```
+💡 If you followed my recommendation and you put the cloned folder into `Downloads`, you normally just have to type the following command :
+```
+cd Downloads/agarpyo-noblet
 ```
 Once you finally found the folder, you should see a line like that in your command prompt :
 ```
